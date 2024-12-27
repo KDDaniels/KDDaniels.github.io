@@ -4,38 +4,68 @@
 let titleElement = document.getElementsByTagName("title")[0];
 let navElement = document.getElementsByClassName("navbar")[0];
 let contentElement = document.getElementById("content");
+let aboutElement = document.getElementById("about");
+
 
 // List of content files
-const contentList = ["home", "projects", "about", "contact"];
+const contentList = ["projects", "contact"];
+
 
 /**
- * Clicks 'home' on load to load the home page of content
+ * Clicks 'about' on load to load the about page of content
  */
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.getElementsByClassName("nav-link");
     
     for (let link of navLinks) {
-        if (link.dataset.page === "home") {
+        if (link.dataset.page === "projects") {
             link.click();
         }
     }
 })
 
 /**
+ * Loads content on window load
+ */
+window.addEventListener("load", () => {
+    addAboutContent();  
+})
+
+
+/**
  * Creates the nav links and sets them up
  */
 contentList.forEach(page => {
+    const li = document.createElement("li");
     const link = document.createElement("a");
-    link.href = "#";
+    link.href = `#${page}`;
     link.textContent = capitalize(page);
     link.setAttribute("data-page", page);
-    link.className = "nav-link"
+    link.className = "nav-link block w-99% text-center py-2 hover:bg-gray-700 border rounded-lg hover:animate-pulse m-1"
     link.addEventListener("click", event => {
         event.preventDefault();
         loadContent(page);
     });
-    navElement.appendChild(link);
+    li.appendChild(link);
+    navElement.appendChild(li);
 });
+
+/**
+ * Loads the html content for the About section
+ */
+async function addAboutContent() {
+    try {
+        const response = await fetch('content/about.html');
+        if (!response.ok) throw new Error("Failed to load about content");
+
+        const html = await response.text();
+        aboutElement.innerHTML = html;
+    } catch (error) {
+        aboutElementElement.innerHTML = `<h1>Error</h1><p>Error loding content: ${error.message}</p>`
+        titleElement.innerHTML = "KDaniels - Error"
+    }
+}
+
 
 /**
  * Loads the html content from a separate file
@@ -54,6 +84,7 @@ async function loadContent(page) {
         titleElement.innerHTML = "KDaniels - Error"
     }
 }
+
 
 /**
  * Capitalizes the string given
