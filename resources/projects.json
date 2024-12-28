@@ -1,0 +1,25 @@
+{
+    "in_progress": [
+        {
+            "title": "ButtahBot",
+            "description": "ButtahBot is a fun little discord bot I'm working on to play goofy sounds and do funny little interactions with friends.",
+            "image": "buttahbot.jpg",
+            "link": "https://github.com/KDDaniels/ButtahBot"
+        },
+        {
+            "title": "This site",
+            "description": "This site is meant to kinda be a portfolio I guess, while also being a hub for my project info and a learning experience.",
+            "image": "mysite.jpg",
+            "link": "#"
+        }
+    ],
+
+    "complete": [
+        {
+            "title": "Stepper595",
+            "description": "A simple Arduino library meant to make stepper motor control fast and easy. Built to utilize SPI to control the motors through a 74HC595 shift register.",
+            "image": "stepper595.jpg",
+            "link": "https://github.com/KDDaniels/Stepper595"
+        }
+    ]
+}
