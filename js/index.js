@@ -96,8 +96,8 @@ async function loadProjects() {
 
                 let projectLink = document.createElement("a");
                 projectLink.href = project.link;
-                projectLink.innerHTML = "View Project";
-                projectLink.classList.add("text-blue-500", "underline", "text-sm", "mt-1", "block", "whitespace-nowrap");
+                projectLink.innerHTML = "View on GitHub";
+                projectLink.classList.add("text-blue-500", "underline", "text-sm", "mt-1", "block");
                 projectLink.target = "_blank";
 
                 projectContainer.appendChild(projectImg);
