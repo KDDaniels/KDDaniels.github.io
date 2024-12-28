@@ -1,14 +1,22 @@
 "use strict";
 
 // Saves elements for later modification
-let titleElement = document.getElementsByTagName("title")[0];
-let navElement = document.getElementsByClassName("navbar")[0];
-let contentElement = document.getElementById("content");
-let aboutElement = document.getElementById("about");
+const titleElement = document.getElementsByTagName("title")[0];
+const navElement = document.getElementsByClassName("navbar")[0];
+const contentElement = document.getElementById("content");
+const aboutElement = document.getElementById("about");
 
 
 // List of content files
 const contentList = ["projects", "contact", "about"];
+
+
+/**
+ * Loads content on window load
+ */
+window.addEventListener("load", () => {
+    addAboutContent();  
+})
 
 
 /**
@@ -24,19 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 })
 
-/**
- * Loads content on window load
- */
-window.addEventListener("load", () => {
-    addAboutContent();  
-})
-
 
 /**
  * Creates the nav links and sets them up
  */
 contentList.forEach(page => {
-    const li = document.createElement("li");
     const link = document.createElement("a");
     link.href = `#${page}`;
     link.textContent = capitalize(page);
@@ -44,18 +44,95 @@ contentList.forEach(page => {
     link.className = "nav-link block w-99% text-center py-2 hover:bg-gray-700 border rounded-lg hover:animate-pulse m-1"
     link.addEventListener("click", event => {
         event.preventDefault();
-        loadContent(page);
+        loadContent(page)
+        .then(() => {
+            if(link.dataset.page === "projects") {
+                loadProjects();
+            }
+        });
+
+        
     });
-    li.appendChild(link);
-    navElement.appendChild(li);
+    navElement.appendChild(link);
 });
+
+
+async function loadProjects() {
+    let unfinPro = document.getElementById("unifnished-projects");
+    let finPro = document.getElementById("finished-projects");
+    
+    fetch("./resources/projects.json")
+    .then((response) => response.json())
+    .then((projects) => {
+        const catList = ["in_progress", "complete"];
+
+        for (let category of catList) {
+        
+            projects[category].forEach((project) => {
+                let projectOutline = document.createElement("div");
+                projectOutline.classList.add("object", "bg-gray-200", "p-4", "rounded");
+
+                let projectContainer = document.createElement("div");
+                projectContainer.classList.add("object", "bg-gray-100", "p-4", "rounded", "flex", "items-start", "gap-4");
+
+                let projectImg = document.createElement("img");
+                projectImg.src = `./resources/${project.image}`;
+                projectImg.alt = `${project.title} image`;
+                projectImg.classList.add("w-20", "h-20", "rounded", "shadow-md");
+
+                let projectTitle = document.createElement("h3");
+                projectTitle.innerHTML = project.title;
+                projectTitle.classList.add("text-lg", "font-bold");
+
+                let projectDesc = document.createElement("p");
+                projectDesc.innerHTML = project.description;
+                projectDesc.classList.add("text-sm", "text-gray-600");
+
+                let projectLink = document.createElement("a");
+                projectLink.href = project.link;
+                projectLink.innerHTML = "View Project";
+                projectLink.classList.add("text-blue-500", "underline", "text-sm", "mt-2", "block");
+                projectLink.target = "_blank";
+
+                projectContainer.appendChild(projectImg);
+                projectContainer.appendChild(projectTitle);
+                projectContainer.appendChild(projectDesc);
+                projectContainer.appendChild(projectLink);
+                projectOutline.appendChild(projectContainer);
+                if (category === "in_progress") {
+                    unfinPro.appendChild(projectOutline);
+                } else {
+                    finPro.appendChild(projectOutline);
+                }
+            })
+        }
+    })
+
+}
+/*
+
+<div class="object bg-gray-200 p-4 rounded">
+    <div class="object bg-gray-100 p-4 rounded flex items-start gap-4">
+        <img src="project1-thumbnail.jpg" alt="Project 1 Thumbnail" class="w-20 h-20 rounded shadow-md" />
+        <div>
+            <h3 class="text-lg font-bold">Project 1</h3>
+            <p class="text-sm text-gray-600">
+                A brief description of Project 1. Highlight key features or goals.
+            </p>
+            <a href="project1-link.html" class="text-blue-500 underline text-sm mt-2 block">View Project</a>
+        </div>
+    </div>
+</div>
+
+*/
+
 
 /**
  * Loads the html content for the About section
  */
 async function addAboutContent() {
     try {
-        const response = await fetch('content/about_sb.html');
+        const response = await fetch("content/about_sb.html");
         if (!response.ok) throw new Error("Failed to load about content");
 
         const html = await response.text();
@@ -72,6 +149,7 @@ async function addAboutContent() {
  * @param {string} page filename to load from
  */
 async function loadContent(page) {
+    // TODO: merge this and addAboutContent
     try {
         const response = await fetch(`content/${page}.html`);
         if (!response.ok) throw new Error(`Failed to load content/${page}.html`);
