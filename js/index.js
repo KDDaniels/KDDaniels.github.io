@@ -8,7 +8,7 @@ let aboutElement = document.getElementById("about");
 
 
 // List of content files
-const contentList = ["projects", "contact"];
+const contentList = ["projects", "contact", "about"];
 
 
 /**
@@ -55,7 +55,7 @@ contentList.forEach(page => {
  */
 async function addAboutContent() {
     try {
-        const response = await fetch('content/about.html');
+        const response = await fetch('content/about_sb.html');
         if (!response.ok) throw new Error("Failed to load about content");
 
         const html = await response.text();
