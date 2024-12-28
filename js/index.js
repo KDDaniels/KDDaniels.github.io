@@ -75,6 +75,12 @@ async function loadProjects() {
                 let projectContainer = document.createElement("div");
                 projectContainer.classList.add("object", "bg-gray-100", "p-4", "rounded", "flex", "items-start", "gap-4");
 
+                let infoContainer = document.createElement("div");
+                infoContainer.classList.add("flex-1", "flex", "flex-col");
+
+                let infoContainerText = document.createElement("div");
+                infoContainerText.classList.add("block", "items-center", "justify-between");
+
                 let projectImg = document.createElement("img");
                 projectImg.src = `./resources/${project.image}`;
                 projectImg.alt = `${project.title} image`;
@@ -82,7 +88,7 @@ async function loadProjects() {
 
                 let projectTitle = document.createElement("h3");
                 projectTitle.innerHTML = project.title;
-                projectTitle.classList.add("text-lg", "font-bold");
+                projectTitle.classList.add("text-lg", "font-bold", "whitespace-nowrap");
 
                 let projectDesc = document.createElement("p");
                 projectDesc.innerHTML = project.description;
@@ -91,13 +97,15 @@ async function loadProjects() {
                 let projectLink = document.createElement("a");
                 projectLink.href = project.link;
                 projectLink.innerHTML = "View Project";
-                projectLink.classList.add("text-blue-500", "underline", "text-sm", "mt-2", "block");
+                projectLink.classList.add("text-blue-500", "underline", "text-sm", "mt-1", "block", "whitespace-nowrap");
                 projectLink.target = "_blank";
 
                 projectContainer.appendChild(projectImg);
-                projectContainer.appendChild(projectTitle);
-                projectContainer.appendChild(projectDesc);
-                projectContainer.appendChild(projectLink);
+                infoContainer.appendChild(projectTitle);
+                infoContainer.appendChild(projectLink);
+                infoContainerText.appendChild(projectDesc);
+                projectContainer.appendChild(infoContainer);
+                projectContainer.appendChild(infoContainerText);
                 projectOutline.appendChild(projectContainer);
                 if (category === "in_progress") {
                     unfinPro.appendChild(projectOutline);
@@ -109,22 +117,6 @@ async function loadProjects() {
     })
 
 }
-/*
-
-<div class="object bg-gray-200 p-4 rounded">
-    <div class="object bg-gray-100 p-4 rounded flex items-start gap-4">
-        <img src="project1-thumbnail.jpg" alt="Project 1 Thumbnail" class="w-20 h-20 rounded shadow-md" />
-        <div>
-            <h3 class="text-lg font-bold">Project 1</h3>
-            <p class="text-sm text-gray-600">
-                A brief description of Project 1. Highlight key features or goals.
-            </p>
-            <a href="project1-link.html" class="text-blue-500 underline text-sm mt-2 block">View Project</a>
-        </div>
-    </div>
-</div>
-
-*/
 
 
 /**
