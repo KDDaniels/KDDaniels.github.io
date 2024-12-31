@@ -94,11 +94,18 @@ async function loadProjects() {
                 projectDesc.innerHTML = project.description;
                 projectDesc.classList.add("text-sm", "text-gray-600");
 
+                let GHImg = document.createElement("img");
+                GHImg.src = "https://github.githubassets.com/assets/GitHub-Logo-ee398b662d42.png";
+                GHImg.alt = "GitHub";
+                GHImg.classList.add("w-20")
+                
                 let projectLink = document.createElement("a");
                 projectLink.href = project.link;
-                projectLink.innerHTML = "View on <img src='https://github.githubassets.com/assets/GitHub-Logo-ee398b662d42.png' alt='GitHub'>";
-                projectLink.classList.add("text-gray-800", "font-semibold", "text-sm", "mt-1", "block", "text-center", "hover:text-gray-600", "hover:animate-pulse");
+                projectLink.innerHTML = "View on ";
+                projectLink.classList.add("text-gray-800", "font-semibold", "text-sm", "mt-1", "block", "hover:text-gray-600", "hover:animate-pulse");
                 projectLink.target = "_blank";
+
+                projectLink.appendChild(GHImg);
 
                 projectContainer.appendChild(projectImg);
                 infoContainer.appendChild(projectTitle);
