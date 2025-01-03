@@ -97,7 +97,14 @@ async function loadProjects() {
                 let GHImg = document.createElement("img");
                 GHImg.src = "https://github.githubassets.com/assets/GitHub-Logo-ee398b662d42.png";
                 GHImg.alt = "GitHub";
-                GHImg.classList.add("w-20")
+                GHImg.classList.add("w-20");
+
+                let projectBadge = document.createElement("img");
+                if (project.badge !== "") {
+                    projectBadge.src = project.badge
+                    projectBadge.alt = "GitHub Release";
+                    projectBadge.classList.add("mt-2", "max-w-min");
+                }
                 
                 let projectLink = document.createElement("a");
                 projectLink.href = project.link;
@@ -110,6 +117,7 @@ async function loadProjects() {
                 projectContainer.appendChild(projectImg);
                 infoContainer.appendChild(projectTitle);
                 infoContainer.appendChild(projectLink);
+                infoContainer.appendChild(projectBadge);
                 infoContainerText.appendChild(projectDesc);
                 projectContainer.appendChild(infoContainer);
                 projectContainer.appendChild(infoContainerText);

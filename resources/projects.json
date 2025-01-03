@@ -4,19 +4,22 @@
             "title": "ButtahBot",
             "description": "ButtahBot is a fun little discord bot I'm working on to play goofy sounds and do funny little interactions with friends.",
             "image": "buttahbot.jpg",
-            "link": "https://github.com/KDDaniels/ButtahBot"
+            "link": "https://github.com/KDDaniels/ButtahBot",
+            "badge": ""
         },
         {
             "title": "This site",
             "description": "This site is meant to kinda be a portfolio I guess, while also being a hub for my project info and a learning experience.",
             "image": "KDaniels.jpg",
-            "link": "https://github.com/KDDaniels/KDDaniels.github.io"
+            "link": "https://github.com/KDDaniels/KDDaniels.github.io",
+            "badge": ""
         },
         {
             "title": "Auto Shade Controller",
             "description": "Arduino sketch intented to control two window shades through stepper motors and a light sensor and is IR remote controlled.",
             "image": "ASC.jpg",
-            "link": "https://github.com/KDDaniels/AutoShadeController"
+            "link": "https://github.com/KDDaniels/AutoShadeController",
+            "badge": ""
         }
     ],
 
@@ -25,7 +28,8 @@
             "title": "Stepper595",
             "description": "A simple Arduino library meant to make stepper motor control fast and easy. Built to utilize SPI to control the motors through a 74HC595 shift register.",
             "image": "stepper595.jpg",
-            "link": "https://github.com/KDDaniels/Stepper595"
+            "link": "https://github.com/KDDaniels/Stepper595",
+            "badge": "https://img.shields.io/github/v/release/KDDaniels/Stepper595"
         }
     ]
 }
