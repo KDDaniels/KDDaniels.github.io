@@ -1,13 +1,6 @@
 {
     "in_progress": [
         {
-            "title": "ButtahBot",
-            "description": "ButtahBot is a fun little discord bot I'm working on to play goofy sounds and do funny little interactions with friends.",
-            "image": "buttahbot.jpg",
-            "link": "https://github.com/KDDaniels/ButtahBot",
-            "badge": ""
-        },
-        {
             "title": "Auto Shade Controller",
             "description": "Arduino sketch intented to control two window shades through stepper motors and a light sensor and is IR remote controlled.",
             "image": "ASC.jpg",
@@ -30,6 +23,13 @@
             "image": "KDaniels.jpg",
             "link": "https://github.com/KDDaniels/KDDaniels.github.io",
             "badge": "https://img.shields.io/github/v/release/KDDaniels/KDDaniels.github.io"
+        },
+        {
+            "title": "ButtahBot",
+            "description": "ButtahBot is a fun little discord bot I'm working on to play goofy sounds and do funny little interactions with friends.",
+            "image": "buttahbot.jpg",
+            "link": "https://github.com/KDDaniels/ButtahBot",
+            "badge": "https://img.shields.io/github/v/release/KDDaniels/ButtahBot"
         }
     ]
 }
