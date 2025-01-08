@@ -5,7 +5,7 @@
             "description": "A small program to make multi-color printing easier with single extruder printers. Slice different colors of the model and merge the G-code with this.",
             "image": "GCM.jpg",
             "link": "https://github.com/KDDaniels/GCodeMerger",
-            "badge": "https://img.shields.io/github/v/release/KDDaniels/GCodeMerger"
+            "badge": ""
         }
         
     ],
