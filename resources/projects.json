@@ -6,6 +6,13 @@
             "image": "GCM.jpg",
             "link": "https://github.com/KDDaniels/GCodeMerger",
             "badge": ""
+        },
+        {
+            "title": "EComDB",
+            "description": "Interface with a small database to keep track of my electronic components (amount, datasheet links, etc)",
+            "image": "",
+            "link": "https://github.com/KDDaniels/EComDB",
+            "badge": ""
         }
         
     ],

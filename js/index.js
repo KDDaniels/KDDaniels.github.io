@@ -82,7 +82,11 @@ async function loadProjects() {
                 infoContainerText.classList.add("block", "items-center", "justify-between");
 
                 let projectImg = document.createElement("img");
-                projectImg.src = `./resources/${project.image}`;
+                if (project.image !== "") {
+                    projectImg.src = `./resources/${project.image}`;
+                } else {
+                    projectImg.src = `./resources/placeholder.jpg`;
+                }
                 projectImg.alt = `${project.title} image`;
                 projectImg.classList.add("w-20", "h-20", "rounded", "shadow-md");
 
