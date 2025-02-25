@@ -10,8 +10,15 @@
         {
             "title": "EComDB",
             "description": "Interface with a small database to keep track of my electronic components (amount, datasheet links, etc)",
-            "image": "",
+            "image": "DBConn.jpg",
             "link": "https://github.com/KDDaniels/EComDB",
+            "badge": ""
+        },
+        {
+            "title": "FunLilPygameProject",
+            "description": "Fun little pygame project with <a target='_blank' style='color:black;font-weight:bold;text-decoration-line:underline;' href='https://github.com/Madeleine-Hunter'>Madeleine Hunter</a> that we're working on.",
+            "image": "pygameart.jpg",
+            "link": "https://github.com/KDDaniels/FunLilPygameProject",
             "badge": ""
         }
         
