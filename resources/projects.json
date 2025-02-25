@@ -9,7 +9,7 @@
         },
         {
             "title": "EComDB",
-            "description": "Interface with a small database to keep track of my electronic components (amount, datasheet links, etc)",
+            "description": "Small SQLite3 database interface",
             "image": "DBConn.jpg",
             "link": "https://github.com/KDDaniels/EComDB",
             "badge": ""
