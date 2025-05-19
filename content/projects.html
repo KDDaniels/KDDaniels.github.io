@@ -1,22 +1,26 @@
-<div class="page-container w-100 mx-auto p-6">
+<div class="page-container flex flex-col">
+
     <h1 class="text-3xl font-bold text-center mb-6">Projects</h1>
-        <div class="flex gap-6 items-start">
 
-            <!-- Unfinished project container -->
-            <div class="flex-1 p-4 border rounded-lg shadow">
-                <h2 class="text-xl font-semibold text-center mb-4">In Progress</h2>
-                <div id="unifnished-projects" class="grid gap-4">
-                    <!-- projects go here -->
-                </div>
-            </div>
+    <div class="flex flex-col lg:flex-row gap-6 flex-grow">
 
-            <!-- Finished project container -->
-            <div class="flex-1 p-4 border rounded-lg shadow">
-                <h2 class="text-xl font-semibold text-center mb-4">Completed</h2>
-                <div id="finished-projects" class="grid gap-4">
-                    <!-- projects go here -->
-                </div>
+        <!-- Unfinished project container -->
+        <div class="p-4 border rounded-lg shadow w-full bg-gray-400 lg:max-h-[87vh] flex flex-col">
+            <h2 class="text-xl font-semibold text-center">In Progress</h2>
+            <div id="unfinished-projects" class="flex-1 overflow-y-auto flex flex-col gap-4">
+                <!-- projects go here -->
             </div>
+            <h2 class="text-center text-sm font-semibold bg-gradient-to-t via-gray-50 rounded-4xl to-transparent">v Scroll to see more v</h2>
             
         </div>
+
+        <!-- Finished project container -->
+        <div class="p-4 border rounded-lg shadow w-full bg-gray-400 lg:max-h-[87vh] flex flex-col">
+            <h2 class="text-xl font-semibold text-center">Completed</h2>
+            <div id="finished-projects" class="flex-1 overflow-y-auto flex flex-col gap-4">
+                <!-- projects go here -->
+            </div>
+            <h2 class="text-center text-sm font-semibold bg-gradient-to-t via-gray-50 rounded-4xl to-transparent">v Scroll to see more v</h2>
+        </div>
+    </div>
 </div>

@@ -1,21 +1,5 @@
 "use strict";
 
-
-// Handles the menu button on mobile
-const sidebar = document.getElementById("sidebar");
-const toggle = document.getElementById("sidebarToggle");
-
-const btnSymbols = ["X", "☰"]
-let buttonState = 0;
-
-toggle.addEventListener("click", () => {
-    sidebar.classList.toggle("-translate-x-full");
-    sidebar.classList.toggle("translate-x-0");
-    buttonState = !buttonState;
-    toggle.innerHTML = buttonState ? btnSymbols[0] : btnSymbols[1];
-})
-
-
 // Saves elements for later modification
 const titleElement = document.getElementsByTagName("title")[0];
 const navElement = document.getElementsByClassName("navbar")[0];
@@ -27,11 +11,17 @@ const aboutElement = document.getElementById("about");
 const contentList = ["projects", "contact", "about"];
 
 
+/**
+ * Loads content on window load
+ */
 window.addEventListener("load", () => {
-    addAboutContent();
+    addAboutContent();  
 })
 
 
+/**
+ * Clicks 'about' on load to load the about page of content
+ */
 document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.getElementsByClassName("nav-link");
     
@@ -43,12 +33,15 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 
+/**
+ * Creates the nav links and sets them up
+ */
 contentList.forEach(page => {
     const link = document.createElement("a");
     link.href = `#${page}`;
     link.textContent = capitalize(page);
     link.setAttribute("data-page", page);
-    link.className = "nav-link block w-99% text-center py-2 hover:bg-gray-700 border rounded-lg hover:animate-pulse active:bg-gray-600 mt-2 mb-2"
+    link.className = "nav-link block w-99% text-center py-2 hover:bg-gray-700 border rounded-lg hover:animate-pulse m-1"
     link.addEventListener("click", event => {
         event.preventDefault();
         loadContent(page)
@@ -65,7 +58,7 @@ contentList.forEach(page => {
 
 
 async function loadProjects() {
-    let unfinPro = document.getElementById("unfinished-projects");
+    let unfinPro = document.getElementById("unifnished-projects");
     let finPro = document.getElementById("finished-projects");
     
     fetch("./resources/projects.json")
@@ -77,12 +70,11 @@ async function loadProjects() {
         
             projects[category].forEach((project) => {
                 let projectOutline = document.createElement("div");
-                projectOutline.classList.add("object", "bg-gray-300", "p-4", "rounded");
+                projectOutline.classList.add("object", "bg-gray-200", "p-4", "rounded");
 
                 let projectContainer = document.createElement("div");
-                projectContainer.classList.add("object", "bg-gray-100", "p-4", "rounded", "flex", "flex-col", "lg:flex-row", "items-start", "gap-4");
+                projectContainer.classList.add("object", "bg-gray-100", "p-4", "rounded", "flex", "items-start", "gap-4");
 
-                // Title, GitHub link, release badge
                 let infoContainer = document.createElement("div");
                 infoContainer.classList.add("flex-1", "flex", "flex-col");
 
@@ -142,9 +134,13 @@ async function loadProjects() {
             })
         }
     })
+
 }
 
 
+/**
+ * Loads the html content for the About section
+ */
 async function addAboutContent() {
     try {
         const response = await fetch("content/about_sb.html");
@@ -159,6 +155,10 @@ async function addAboutContent() {
 }
 
 
+/**
+ * Loads the html content from a separate file
+ * @param {string} page filename to load from
+ */
 async function loadContent(page) {
     // TODO: merge this and addAboutContent
     try {
@@ -175,6 +175,11 @@ async function loadContent(page) {
 }
 
 
+/**
+ * Capitalizes the string given
+ * @param {string} word String to be capitalized
+ * @returns Capitalized word
+ */
 function capitalize(word) {
     return String(word).charAt(0).toUpperCase() + String(word).slice(1);
 }
