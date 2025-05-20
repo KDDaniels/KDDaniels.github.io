@@ -128,7 +128,7 @@ async function loadProjects() {
                 infoContainer.classList.add("flex-1", "flex", "flex-col");
 
                 let infoContainerText = document.createElement("div");
-                infoContainerText.classList.add("items-center", "justify-between", "pl-5");
+                infoContainerText.classList.add("items-center", "justify-between", "lg:w-3/5");
 
                 
                 let projectLink = document.createElement("a");
