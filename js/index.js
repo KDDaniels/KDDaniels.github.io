@@ -15,6 +15,8 @@ toggle.addEventListener("click", () => {
     toggle.innerHTML = buttonState ? btnSymbols[0] : btnSymbols[1];
 })
 
+// toggle.click();
+
 
 // Saves elements for later modification
 const titleElement = document.getElementsByTagName("title")[0];
@@ -76,19 +78,14 @@ async function loadProjects() {
         for (let category of catList) {
         
             projects[category].forEach((project) => {
-                let projectOutline = document.createElement("div");
-                projectOutline.classList.add("object", "bg-gray-300", "p-4", "rounded");
 
-                let projectContainer = document.createElement("div");
-                projectContainer.classList.add("object", "bg-gray-100", "p-4", "rounded", "flex", "flex-col", "lg:flex-row", "items-start", "gap-4");
+                let mainDiv = document.createElement("div");
+                mainDiv.classList.add("flex", "flex-row");
 
-                // Title, GitHub link, release badge
-                let infoContainer = document.createElement("div");
-                infoContainer.classList.add("flex-1", "flex", "flex-col");
+                let textDiv = document.createElement("div");
+                textDiv.classList.add("flex", "flex-col", "pl-2");
 
-                let infoContainerText = document.createElement("div");
-                infoContainerText.classList.add("block", "items-center", "justify-between");
-
+                // img, title, ghimg, and badge should all be consistant 
                 let projectImg = document.createElement("img");
                 if (project.image !== "") {
                     projectImg.src = `./resources/${project.image}`;
@@ -100,12 +97,8 @@ async function loadProjects() {
 
                 let projectTitle = document.createElement("h3");
                 projectTitle.innerHTML = project.title;
-                projectTitle.classList.add("text-lg", "font-bold", "whitespace-nowrap");
-
-                let projectDesc = document.createElement("p");
-                projectDesc.innerHTML = project.description;
-                projectDesc.classList.add("text-sm", "text-gray-600");
-
+                projectTitle.classList.add("text-md", "font-bold", "whitespace-nowrap");
+                
                 let GHImg = document.createElement("img");
                 GHImg.src = "https://github.githubassets.com/assets/GitHub-Logo-ee398b662d42.png";
                 GHImg.alt = "GitHub";
@@ -117,6 +110,26 @@ async function loadProjects() {
                     projectBadge.alt = "GitHub Release";
                     projectBadge.classList.add("mt-2", "max-w-min");
                 }
+
+                // desc should be on right for desktop, and under on mobile
+                let projectDesc = document.createElement("p");
+                projectDesc.innerHTML = project.description;
+                projectDesc.classList.add("text-sm", "text-gray-600");
+
+
+                let projectOutline = document.createElement("div");
+                projectOutline.classList.add("object", "bg-gray-300", "p-4", "rounded");
+
+                let projectContainer = document.createElement("div");
+                projectContainer.classList.add("object", "bg-gray-100", "p-4", "rounded", "flex", "flex-col", "lg:flex-row", "items-start", "gap-4");
+
+                // Title, GitHub link, release badge
+                let infoContainer = document.createElement("div");
+                infoContainer.classList.add("flex-1", "flex", "flex-col");
+
+                let infoContainerText = document.createElement("div");
+                infoContainerText.classList.add("items-center", "justify-between", "pl-5");
+
                 
                 let projectLink = document.createElement("a");
                 projectLink.href = project.link;
@@ -126,12 +139,15 @@ async function loadProjects() {
 
                 projectLink.appendChild(GHImg);
 
-                projectContainer.appendChild(projectImg);
-                infoContainer.appendChild(projectTitle);
-                infoContainer.appendChild(projectLink);
-                infoContainer.appendChild(projectBadge);
+                textDiv.appendChild(projectTitle);
+                textDiv.appendChild(projectLink);
+                textDiv.appendChild(projectBadge);
+
+                mainDiv.appendChild(projectImg);
+                mainDiv.appendChild(textDiv);
+
                 infoContainerText.appendChild(projectDesc);
-                projectContainer.appendChild(infoContainer);
+                projectContainer.appendChild(mainDiv);
                 projectContainer.appendChild(infoContainerText);
                 projectOutline.appendChild(projectContainer);
                 if (category === "in_progress") {
