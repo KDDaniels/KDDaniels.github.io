@@ -37,8 +37,10 @@ window.addEventListener("load", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.getElementsByClassName("nav-link");
     
+    const tgt = "about"; // projects, about, contact
+
     for (let link of navLinks) {
-        if (link.dataset.page === "projects") {
+        if (link.dataset.page === tgt) {
             link.click();
         }
     }
