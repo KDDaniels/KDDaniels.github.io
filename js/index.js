@@ -15,7 +15,7 @@ toggle.addEventListener("click", () => {
     toggle.innerHTML = buttonState ? btnSymbols[0] : btnSymbols[1];
 })
 
-// toggle.click();
+toggle.click();
 
 
 // Saves elements for later modification
@@ -37,10 +37,8 @@ window.addEventListener("load", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.getElementsByClassName("nav-link");
     
-    const tgt = "about"; // projects, about, contact
-
     for (let link of navLinks) {
-        if (link.dataset.page === tgt) {
+        if (link.dataset.page === "projects") {
             link.click();
         }
     }
