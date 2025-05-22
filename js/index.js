@@ -69,6 +69,8 @@ contentList.forEach(page => {
 async function loadProjects() {
     let unfinPro = document.getElementById("unfinished-projects");
     let finPro = document.getElementById("finished-projects");
+    const GHImgCache = new Image();
+    GHImgCache.src = "https://github.githubassets.com/assets/GitHub-Logo-ee398b662d42.png";
     
     fetch("./resources/projects.json")
     .then((response) => response.json())
@@ -85,7 +87,6 @@ async function loadProjects() {
                 let textDiv = document.createElement("div");
                 textDiv.classList.add("flex", "flex-col", "pl-2");
 
-                // img, title, ghimg, and badge should all be consistant 
                 let projectImg = document.createElement("img");
                 if (project.image !== "") {
                     projectImg.src = `./resources/${project.image}`;
@@ -100,7 +101,7 @@ async function loadProjects() {
                 projectTitle.classList.add("text-md", "font-bold", "whitespace-nowrap");
                 
                 let GHImg = document.createElement("img");
-                GHImg.src = "https://github.githubassets.com/assets/GitHub-Logo-ee398b662d42.png";
+                GHImg.src = GHImgCache.src;
                 GHImg.alt = "GitHub";
                 GHImg.classList.add("w-20");
 
@@ -111,7 +112,6 @@ async function loadProjects() {
                     projectBadge.classList.add("mt-2", "max-w-min");
                 }
 
-                // desc should be on right for desktop, and under on mobile
                 let projectDesc = document.createElement("p");
                 projectDesc.innerHTML = project.description;
                 projectDesc.classList.add("text-sm", "text-gray-600");
@@ -123,7 +123,6 @@ async function loadProjects() {
                 let projectContainer = document.createElement("div");
                 projectContainer.classList.add("object", "bg-gray-100", "p-4", "rounded", "flex", "flex-col", "lg:flex-row", "items-start", "gap-4");
 
-                // Title, GitHub link, release badge
                 let infoContainer = document.createElement("div");
                 infoContainer.classList.add("flex-1", "flex", "flex-col");
 
