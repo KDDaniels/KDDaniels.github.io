@@ -20,6 +20,13 @@
             "image": "pygameart.jpg",
             "link": "https://github.com/KDDaniels/FunLilPygameProject",
             "badge": ""
+        },
+        {
+            "title": "RelayTimer",
+            "description": "Timer board for a relay using an ATTiny85 and LCD screen",
+            "image": "RelayTimer.jpg",
+            "link": "https://github.com/KDDaniels/RelayTimer",
+            "badge": ""
         }
         
     ],
