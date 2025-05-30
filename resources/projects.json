@@ -26,7 +26,7 @@
     "complete": [
         {
             "title": "RelayTimer",
-            "description": "Timer board for a relay using an ATTiny85 and LCD screen",
+            "description": "Simple timer for a relay. Uses a LCD to display the time and has two buttons to control it. Includes KiCad project files.",
             "image": "RelayTimer.jpg",
             "link": "https://github.com/KDDaniels/RelayTimer",
             "badge": "https://img.shields.io/github/v/release/KDDaniels/RelayTimer"
