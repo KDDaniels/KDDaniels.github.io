@@ -5,6 +5,7 @@
 const sidebar = document.getElementById("sidebar");
 const toggle = document.getElementById("sidebarToggle");
 
+
 const btnSymbols = ["X", "☰"]
 let buttonState = 0;
 
@@ -156,6 +157,19 @@ async function loadProjects() {
                 }
             })
         }
+
+        if(finPro.scrollHeight > finPro.offsetHeight)
+        {
+            const scrollMsg = document.getElementById("scroll-msg-finished");
+            scrollMsg.classList.add("lg:block");
+        }
+
+        if(unfinPro.scrollHeight > unfinPro.offsetHeight)
+        {
+            const scrollMsg = document.getElementById("scroll-msg-unfinished");
+            scrollMsg.classList.add("lg:block");
+        }
+
     })
 }
 
