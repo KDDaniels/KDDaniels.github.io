@@ -42,7 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (link.dataset.page === "projects") {
             link.click();
         }
+
     }
+
+    
 })
 
 
@@ -65,6 +68,9 @@ contentList.forEach(page => {
     });
     navElement.appendChild(link);
 });
+
+
+
 
 
 async function loadProjects() {
@@ -181,10 +187,21 @@ async function addAboutContent() {
 
         const html = await response.text();
         aboutElement.innerHTML = html;
+
+        addMorseLink();
+        
     } catch (error) {
         aboutElementElement.innerHTML = `<h1>Error</h1><p>Error loding content: ${error.message}</p>`
         titleElement.innerHTML = "KDaniels - Error"
     }
+}
+
+function addMorseLink() {
+    const morseLink = document.getElementById("morse");
+    morseLink.addEventListener("click", event => {
+        event.preventDefault();
+        loadContent("morse");
+    });
 }
 
 
