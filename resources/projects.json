@@ -51,13 +51,6 @@
             "image": "buttahbot.jpg",
             "link": "https://github.com/KDDaniels/ButtahBot",
             "badge": "https://img.shields.io/github/v/release/KDDaniels/ButtahBot"
-        },
-        {
-            "title": "Auto Shade Controller",
-            "description": "Arduino sketch intented to control two window shades through stepper motors and a light sensor and is IR remote controlled.",
-            "image": "ASC.jpg",
-            "link": "https://github.com/KDDaniels/AutoShadeController",
-            "badge": "https://img.shields.io/github/v/release/KDDaniels/AutoShadeController"
         }
     ]
 }
