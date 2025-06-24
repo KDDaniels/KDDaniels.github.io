@@ -212,8 +212,26 @@ async function loadContent(page) {
         if (!response.ok) throw new Error(`Failed to load content/${page}.html`);
 
         const html = await response.text();
-        contentElement.innerHTML = html;
+
+        const temp = document.createElement('div');
+        temp.innerHTML = html;
+
+        // Dynamically load js files specific to each page
+        const scripts = temp.querySelectorAll('script');
+        scripts.forEach(script => {
+            const newScript = document.createElement('script');
+
+            if (script.src) {
+                newScript.src = script.src;
+            }
+
+            document.body.appendChild(newScript);
+            script.remove();
+        })
+
+        contentElement.innerHTML = temp.innerHTML;
         titleElement.innerHTML = `KDaniels - ${capitalize(page)}`
+
     } catch (error) {
         contentElement.innerHTML = `<h1>Error</h1><p>Error loding content: ${error.message}</p>`
         titleElement.innerHTML = "KDaniels - Error"
