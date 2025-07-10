@@ -6,6 +6,13 @@
             "image": "pygameart.jpg",
             "link": "https://github.com/KDDaniels/FunLilPygameProject",
             "badge": ""
+        },
+        {
+            "title": "SDBI - Simple Database Interface",
+            "description": "Simple little interface for sqlite3 databases.",
+            "image": "SDBI.jpg",
+            "link": "https://github.com/KDDaniels/SDBI",
+            "badge": ""
         }
     ],
 
